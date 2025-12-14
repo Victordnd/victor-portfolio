@@ -9,6 +9,8 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
     
-  }
+  },
+   site: 'https://victordnd.github.io',
+  base: '/victor-portfolio', 
   
 });
