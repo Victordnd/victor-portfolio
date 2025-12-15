@@ -1,0 +1,57 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { projects } from "../data/projects";
+
+const github = "https://github.com/victordnd";
+---
+
+<BaseLayout
+  title="Projects — Victor Daniel"
+  description="Selected projects: algorithms practice, backend work, and legacy modernization notes."
+>
+  <div class="flex items-end justify-between gap-4">
+    <h1 class="text-2xl font-semibold tracking-tight">Projects</h1>
+    <a
+      class="rounded-xl border border-slate-700 px-4 py-2 text-sm font-semibold text-slate-100 hover:bg-slate-800/40"
+      href={github}
+      target="_blank"
+      rel="noreferrer"
+    >
+      View GitHub →
+    </a>
+  </div>
+
+  <p class="mt-3 max-w-3xl text-sm text-slate-300">
+    A small selection of projects and learning tracks. I’m continuously adding new work and improving documentation.
+  </p>
+
+  <div class="mt-6 grid gap-4 sm:grid-cols-2">
+    {projects.map((p) => (
+      <article class="rounded-2xl border border-slate-800/60 bg-slate-900/20 p-6">
+        <h2 class="text-base font-semibold text-slate-100">{p.name}</h2>
+        <p class="mt-2 text-sm text-slate-300">{p.description}</p>
+
+        <div class="mt-4 flex flex-wrap gap-2">
+          {p.stack.map((t) => (
+            <span class="rounded-full border border-slate-700/70 bg-slate-950/30 px-3 py-1 text-xs text-slate-200">
+              {t}
+            </span>
+          ))}
+        </div>
+
+        <div class="mt-5 flex gap-3 text-sm">
+          {p.repo && (
+            <a class="font-semibold text-white hover:underline" href={p.repo} target="_blank" rel="noreferrer">
+              Repo
+            </a>
+          )}
+          {p.live && (
+            <a class="font-semibold text-white hover:underline" href={p.live} target="_blank" rel="noreferrer">
+              Live
+            </a>
+          )}
+        </div>
+      </article>
+    ))}
+  </div>
+</BaseLayout>
